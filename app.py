@@ -26,6 +26,7 @@ def index():
 @app.route('/perform',methods=['GET','POST'])
 def perform():
     u=str(session.get('url'))
+    u='https://'+u
     n=int(session.get('loop'))
     print(u+'  '+str(n))
     for i in range(n):
