@@ -14,11 +14,20 @@ app = Flask(__name__)
 app.secret_key='Hellothere'
 @app.route('/')
 def index():
+    session.pop('u',None)
+    session.pop('n',None)
+    if request.method == 'POST':
+        u= request.form['url']
+        p=request.form['loop']
+        session['url']=u
+        session['loop']=p
+        return redirect(url_for('perform'))
     return render_template('index.html')
 @app.route('/perform',methods=['GET','POST'])
 def perform():
-    u=str(request.form['url'])
-    n=int(request.form['loop'])
+    u=str(session.get('url'))
+    n=int(session.get('loop'))
+    print(u+'  '+n)
     for i in range(n):
         r(u)
     return render_template('perform.html')
