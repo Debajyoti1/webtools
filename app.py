@@ -9,12 +9,19 @@ def r():
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     driver.get('https://gadgetguys.in')
-    print(driver.page_source)
+    print(driver.title)
 app = Flask(__name__)
 app.secret_key='Hellothere'
 @app.route('/')
 def index():
-    r()
     return render_template('index.html')
+@app.route('/perform')
+def perform():
+    url=str(request.from['url'])
+    n=int(request.form['loop'])
+    for i in range(n):
+        r()
+    return render_template('perform.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
