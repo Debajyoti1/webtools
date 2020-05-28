@@ -3,8 +3,8 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.chrome.options import Options
 import os
-CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', '/usr/local/bin/chromedriver')
-GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/usr/bin/google-chrome')
+CHROMEDRIVER_PATH = os.environ.get('CHROMEDRIVER_PATH', '/app/.chromedriver/bin/chromedriver')
+GOOGLE_CHROME_BIN = os.environ.get('GOOGLE_CHROME_BIN', '/app/.apt/usr/bin/google-chrome')
 options = Options()
 options.binary_location = GOOGLE_CHROME_BIN
 options.add_argument('--disable-gpu')
