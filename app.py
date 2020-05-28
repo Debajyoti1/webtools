@@ -27,7 +27,7 @@ def index():
 def perform():
     u=str(session.get('url'))
     n=int(session.get('loop'))
-    print(u+'  '+n)
+    print(u+'  '+str(n))
     for i in range(n):
         r(u)
     return render_template('perform.html')
