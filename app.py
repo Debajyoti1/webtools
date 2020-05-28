@@ -15,7 +15,7 @@ app.secret_key='Hellothere'
 @app.route('/')
 def index():
     return render_template('index.html')
-@app.route('/perform')
+@app.route('/perform',methods=['GET','POST'])
 def perform():
     u=str(request.form['url'])
     n=int(request.form['loop'])
