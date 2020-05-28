@@ -11,6 +11,7 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), c
 def r(a):
     driver.get(a)
     print(driver.title)
+    driver.close()
 app = Flask(__name__)
 app.secret_key='Hellothere'
 @app.route('/',methods=['GET','POST'])
