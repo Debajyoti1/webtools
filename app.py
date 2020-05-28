@@ -17,7 +17,7 @@ def index():
     return render_template('index.html')
 @app.route('/perform')
 def perform():
-    url=str(request.from['url'])
+    u=str(request.from['url'])
     n=int(request.form['loop'])
     for i in range(n):
         r()
