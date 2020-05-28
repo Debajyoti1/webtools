@@ -12,7 +12,7 @@ def r(a):
     print(driver.title)
 app = Flask(__name__)
 app.secret_key='Hellothere'
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def index():
     session.pop('u',None)
     session.pop('n',None)
