@@ -19,6 +19,7 @@ def r(a,usrand):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     driver.get(a)
     print(driver.title)
+    print driver.page_source.encode("utf-8")
     driver.close()
 app = Flask(__name__)
 app.secret_key='Hellothere'
