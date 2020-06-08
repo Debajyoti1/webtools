@@ -17,11 +17,11 @@ def r1(u,n,usrand):
 def r(a,usrand):
     chrome_options.add_argument("user-agent="+usrand)
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    driver.manage().deleteAllCookies();
+    driver.delete_all_cookies()
     driver.get(a)
     print(driver.title)
-    driver.manage().getCookies();
-    driver.manage().deleteAllCookies();
+    driver.get_cookies()
+    driver.delete_all_cookies()
     driver.close()
 app = Flask(__name__)
 app.secret_key='Hellothere'
