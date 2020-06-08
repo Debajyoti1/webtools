@@ -20,7 +20,7 @@ def r(a,usrand):
     driver.delete_all_cookies()
     driver.get(a)
     print(driver.title)
-    driver.get_cookies()
+    print(driver.get_cookies())
     driver.delete_all_cookies()
     driver.close()
 app = Flask(__name__)
