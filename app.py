@@ -21,6 +21,7 @@ def r(a,usrand):
     driver.get(a)
     print(driver.title)
     print(driver.get_cookies())
+    print(driver.page_source.encode("utf-8"))
     driver.delete_all_cookies()
     driver.close()
 app = Flask(__name__)
