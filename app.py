@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, session, redirect, g, jsonify
+from flask import Flask, render_template, url_for, request, session, redirect, g
 from selenium import webdriver
 import os
 import threading
