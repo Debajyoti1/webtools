@@ -49,5 +49,8 @@ def perform():
     t1.start()
     return render_template('perform.html')
 
+@app.route('/yt')
+def yt():
+    return 'hi yt'
 if __name__ == '__main__':
     app.run(debug=True)
