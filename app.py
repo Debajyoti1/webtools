@@ -75,6 +75,7 @@ def performyt():
     m=str(session.get('min'))
     print(u)
     print(m)
+    prin(usrand)
     t1 = threading.Thread(target=r2, args=(u,m,usrand,))
     t1.start()
     return render_template('perform.html')
