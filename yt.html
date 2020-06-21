@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Simple web scrapper</title>
+
+{% endblock %}
+
+{% block body %}
+<section class="container">
+	<form class="form-group py-5 text-center mx-1" method="POST">
+	  <div class="bg-info text-white p-5">Note: Enter the youtube video url without http or https</div>
+	  <input class="form-control my-5" type="text" name="ur" placeholder="input url"></input><br>
+	  <button class="btn btn-danger" name="start">Start</button>
+	</form>
+</section>
+{% endblock %}

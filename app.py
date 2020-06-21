@@ -51,6 +51,11 @@ def perform():
 
 @app.route('/yt')
 def yt():
-    return 'hi yt'
+    session.pop('ur',None)
+    if request.method == 'POST':
+        ur= request.form['ur']
+        session['ur']=u
+        return redirect(url_for('performyt'))
+    return render_template('yt.html')
 if __name__ == '__main__':
     app.run(debug=True)
