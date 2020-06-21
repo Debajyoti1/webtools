@@ -31,9 +31,9 @@ def r2(u,usrand):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     driver.delete_all_cookies()
     driver.get(u)
-    print(driver.title)
-    time.sleep(300)
     driver.maximize_window()
+    print(driver.title)
+    time.sleep(60)
     print(driver.get_cookies())
     driver.delete_all_cookies()
 
