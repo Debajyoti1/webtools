@@ -26,14 +26,16 @@ def r(a,usrand):
     driver.delete_all_cookies()
     driver.close()
 
-def r2(u,usrand):
+def r2(u,m,usrand):
     chrome_options.add_argument("user-agent="+usrand)
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     driver.delete_all_cookies()
     driver.get(u)
     driver.maximize_window()
     print(driver.title)
-    time.sleep(60)
+    m=int(m)
+    m=m*60
+    time.sleep(m)
     print(driver.get_cookies())
     driver.delete_all_cookies()
 
@@ -70,17 +72,22 @@ def performyt():
     usrand=str(ua.random)
     u=str(session.get('ur'))
     u='https://'+u
+    m=str(session.get('min'))
     print(u)
-    t1 = threading.Thread(target=r2, args=(u,usrand,))
+    print(m)
+    t1 = threading.Thread(target=r2, args=(u,m,usrand,))
     t1.start()
     return render_template('perform.html')
 
 @app.route('/yt',methods=['GET','POST'])
 def yt():
     session.pop('ur',None)
+    session.pop('min',None)
     if request.method == 'POST':
         ur= request.form['ur']
+        min= request.form['min']
         session['ur']=ur
+        session['min']=min
         return redirect(url_for('performyt'))
     return render_template('yt.html')
 if __name__ == '__main__':
