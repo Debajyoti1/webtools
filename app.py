@@ -3,6 +3,7 @@ from selenium import webdriver
 import os
 import threading
 from fake_useragent import UserAgent
+import time
 ua = UserAgent()
 usrand=ua.random
 chrome_options = webdriver.ChromeOptions()
@@ -24,6 +25,20 @@ def r(a,usrand):
     print(driver.page_source.encode("utf-8"))
     driver.delete_all_cookies()
     driver.close()
+
+def r2(u,usrand):
+    chrome_options.add_argument("user-agent="+usrand)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    driver.delete_all_cookies()
+    driver.get(u)
+    print(driver.title)
+    time.sleep(300)
+    driver.maximize_window()
+    print(driver.get_cookies())
+    driver.delete_all_cookies()
+
+    driver.close()
+
 app = Flask(__name__)
 app.secret_key='Hellothere'
 @app.route('/',methods=['GET','POST'])
@@ -49,12 +64,23 @@ def perform():
     t1.start()
     return render_template('perform.html')
 
+@app.route('/performyt',methods=['GET','POST'])
+def performyt():
+    ua = UserAgent()
+    usrand=str(ua.random)
+    u=str(session.get('ur'))
+    u='https://'+u
+    print(u)
+    t1 = threading.Thread(target=r2, args=(u,usrand,))
+    t1.start()
+    return render_template('perform.html')
+
 @app.route('/yt')
 def yt():
     session.pop('ur',None)
     if request.method == 'POST':
         ur= request.form['ur']
-        session['ur']=u
+        session['ur']=ur
         return redirect(url_for('performyt'))
     return render_template('yt.html')
 if __name__ == '__main__':
