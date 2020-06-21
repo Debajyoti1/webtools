@@ -75,7 +75,7 @@ def performyt():
     t1.start()
     return render_template('perform.html')
 
-@app.route('/yt')
+@app.route('/yt',methods=['GET','POST']')
 def yt():
     session.pop('ur',None)
     if request.method == 'POST':
